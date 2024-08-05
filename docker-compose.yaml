@@ -1,0 +1,19 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - /usr/app/node_modules
+      - ./frontend:/usr/app
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    environment:
+      - BACKEND_PORT=${BACKEND_PORT}
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
