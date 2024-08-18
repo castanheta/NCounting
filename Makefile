@@ -22,10 +22,10 @@ stop:
 	$(call docker_compose_cmd) stop
 
 build:
-	mvn package -f backend/pom.xml && $(call docker_compose_cmd) build
+	$(call docker_compose_cmd) build
 
 build-no-cache:
-	mvn package -f backend/pom.xml && $(call docker_compose_cmd) build --no-cache
+	$(call docker_compose_cmd) build --no-cache
 
 logs:
 	$(call docker_compose_cmd) logs -f
